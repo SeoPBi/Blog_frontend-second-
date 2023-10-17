@@ -1,10 +1,14 @@
 import './App.css';
 import Athentication from './views/Athentication';
+import MainLaylout from './views/layouts/MainLayout';
 
 function App() {
 
   return (
-    <Athentication />
+    <>
+      <MainLaylout />
+      <Athentication />
+    </>
   );
 }
 
