@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function BoardMain() {
     return (
-        <div>Board Main</div>
+        <div style={{ height: '100vh', backgroundColor: '#99aa00' }}>Board Main</div>
     )
 }

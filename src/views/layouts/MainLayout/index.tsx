@@ -15,10 +15,10 @@ export default function MainLayout() {
     const getBoard = async (token: string) => {
         const requestOption = {
             headers: {
-                Authoricaiton: `Bearer ${token}`
+                Authorization: `Bearer ${token}`
             }
         };
-        await axios.get('http://localhost:4000/api/board', requestOption).then((response) => {
+        await axios.get('http://localhost:4000/api/board/', requestOption).then((response) => {
             setBoardResponse(response.data);
         }).catch((error) => '');
     }
@@ -26,12 +26,13 @@ export default function MainLayout() {
     useEffect(() => {
         const token = cookies.token;
         if (token) getBoard(token);
-    }, [user]);
+        else setBoardResponse('');
+    }, [cookies.token]);
 
     return (
         <>
             <Navigation />
-            {boardResponse ? (<BoardMain />) : (<Athentication />)}
+            {user ? (<BoardMain />) : (<Athentication />)}
         </>
     )
 }
