@@ -30,14 +30,13 @@ export default function SignIn(props: Props) {
 
         const signInResponse = await signInApi(data);
 
-        if (signInResponse) {
-            alert("로그인에 실패했습니다.");
-            return
-        }
-        if (signInResponse.result) {
+        console.log(signInResponse);
+
+        if (!signInResponse || !signInResponse.result) {
             alert("로그인에 실패했습니다.");
             return;
         }
+
         const { token, exprTime, user } = signInResponse.data;
         const expires = new Date();
         expires.setMilliseconds(expires.getMilliseconds() + exprTime);
